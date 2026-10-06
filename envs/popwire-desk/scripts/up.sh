@@ -68,8 +68,8 @@ SERVICE="$(echo "$STATUS" | python3 -c 'import json,sys; print(json.load(sys.std
 echo "api $API_URL"
 
 say "schema, rls, fixture"
-# ⛔ 02-seed.sql NEVER TRUNCATES. popwire_posts is shared with wirecall-desk, which seeds six
-# `wcdesk-%` rows in it, and social_posts is the estate-wide posting ledger. The seed deletes
+# ⛔ 02-seed.sql NEVER TRUNCATES. popwire_posts is shared with another environment, which seeded
+# six `wcdesk-%` rows in it, and social_posts is the estate-wide posting ledger. The seed deletes
 # `marrowgate-%` and `app = 'popwire'` and nothing else.
 for f in 01-schema.sql 03-rls.sql 02-seed.sql; do
   docker cp "$HERE/sql/$f" "$DB:/tmp/popwire-$f" >/dev/null

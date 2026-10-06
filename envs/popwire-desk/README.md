@@ -88,9 +88,8 @@ copied out of the lane and there is no stub to grade by accident.
 
 ## The mirror deletes, and the table is shared
 
-`popwire_posts` is not Popwire's alone on this stack. `wirecall-desk` creates the same table and
-seeds six `wcdesk-%` rows into it, because WireCall settles a slate by re-reading the two wires it
-covers. Measured 2026-09-19: those six rows were sitting in it before this environment existed.
+`popwire_posts` is not Popwire's alone on this stack. Another environment created the same table and
+seeded six `wcdesk-%` rows into it. Measured 2026-09-19: those six rows were sitting in it before this environment existed.
 
 And `scripts/mirror-posts.mjs` ends by deleting every row it did not just write:
 

@@ -72,7 +72,7 @@ Two things the browser rollout has to get right, both of which fail silently:
 ## Stripe, models and mail
 
 **No Stripe key is set, and that is the stricter reading of "use a placeholder."** MatchLine
-bills on the second live Stripe key on this machine, the one OutRip and WireCall use
+bills on the second live Stripe key on this machine, the one OutRip uses
 (`acct_1U94AeHX6skw2rM7`, measured and recorded in the product's own `.env.example`). A
 placeholder is not inert: `new Stripe('sk_test_whatever')` constructs happily and the first call
 goes out over the wire to `api.stripe.com` to be refused there. Leaving the variable **absent**

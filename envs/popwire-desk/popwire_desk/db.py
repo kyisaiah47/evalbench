@@ -49,8 +49,8 @@ def reset(seed_sql_path: str, dsn: str | None = None, attempts: int = 4) -> None
     """Re-apply sql/02-seed.sql. Measured at 0.06-0.13s against the local stack on 2026-09-19.
 
     ⛔ IT DOES NOT TRUNCATE, AND THE SEED DOES NOT EITHER (rule 11a). Two of this
-    environment's four tables are shared on this stack: wirecall-desk seeds six `wcdesk-%`
-    rows into `popwire_posts`, and `social_posts` is the estate-wide posting ledger. The
+    environment's four tables are shared on this stack: another environment seeded six
+    `wcdesk-%` rows into `popwire_posts`, and `social_posts` is the estate-wide posting ledger. The
     seed deletes `marrowgate-%` and `app = 'popwire'` and nothing else.
 
     ⛔ AND IT TOLERATES A LOCK CONFLICT RATHER THAN RAISING. A neighbour's reset touching

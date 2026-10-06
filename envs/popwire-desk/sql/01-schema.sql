@@ -15,9 +15,8 @@
 -- ⛔ TWO OF THE FOUR ARE SHARED ON THIS STACK AND NEITHER IS TRUNCATED ANYWHERE HERE
 --    (rule 11a).
 --
---   public.popwire_posts   wirecall-desk creates this table too and seeds SIX rows in it,
---                          `wcdesk-%`, because WireCall settles a slate by re-reading the
---                          two wires it covers. Measured 2026-09-19 on the running stack:
+--   public.popwire_posts   another environment created this table too and seeded SIX rows in
+--                          it, `wcdesk-%`. Measured 2026-09-19 on the running stack:
 --                          six wcdesk-* rows were sitting in it before this environment
 --                          existed. 02-seed.sql here deletes only `marrowgate-%`, every
 --                          guard counts only `marrowgate-%`, and the mirror task's runner

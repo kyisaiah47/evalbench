@@ -97,8 +97,8 @@ one field`) and the subscribe route cannot do it, because its upsert payload is
 exactly, and it is in `not_gradable` and in the defects rather than in `taskset.py`.
 
 **Rule 2, check what the UI renders for a real account.** This product has no accounts at all, so
-there is no `workspaceSlices()` to read. The publication question replaces it, and wirecall is the
-reason it has to be asked: **does a row written into the database ever reach a page.** Measured by
+there is no `workspaceSlices()` to read. The publication question replaces it, and it has to be
+asked: **does a row written into the database ever reach a page.** Measured by
 putting one row into `publication_posts` that exists nowhere in the committed archive, rebuilding,
 and looking:
 

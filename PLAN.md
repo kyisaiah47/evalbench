@@ -104,8 +104,7 @@ means those 24.
 
 **Done.** unemploy, covercheck, clausewatch, cardchase, standup.
 
-**Zero OAuth, worth a real taskset.** outrip 3328, starreply 3752, parserail 3769, frontwire 3309,
-wirecall 3374.
+**Zero OAuth, worth a real taskset.** outrip 3328, starreply 3752, parserail 3769, frontwire 3309.
 
 **Zero OAuth and thin**, one or two tables each, so a small taskset or an honest not-gradable
 verdict: stacktab 3318, popwire 3747, matchline 3300, breachprobe 3851, agentwire 3741,

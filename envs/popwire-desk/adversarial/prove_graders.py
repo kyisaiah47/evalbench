@@ -27,8 +27,7 @@ deleting every popwire_posts row it did not just write, unconditionally:
     const orphans = (all || []).map((r) => r.slug).filter((s) => !keep.includes(s));
 
 In production that is correct and the table is Popwire's alone. On this shared stack it is not:
-wirecall-desk seeds six `wcdesk-%` rows into the same table because WireCall settles a slate by
-re-reading the wires it covers. Measured 2026-09-19: the first honest run here removed all six.
+another environment seeded six `wcdesk-%` rows into the same table. Measured 2026-09-19: the first honest run here removed all six.
 So the runner below snapshots every foreign row, runs the real script unmodified, and puts them
 back in a `finally`. The product is not edited and the neighbour is not destroyed.
 
@@ -181,7 +180,7 @@ def run_mirror() -> str:
     would be graded on what the live account posted this morning.
 
     ⛔ AND THE NEIGHBOUR'S ROWS ARE PUT BACK. See this module's header: the script's last step
-    deletes every popwire_posts row it did not just write, and wirecall-desk owns six of them.
+    deletes every popwire_posts row it did not just write, and another environment owns six of them.
     """
     foreign = db.rows(
         "select * from popwire_posts where slug not like 'marrowgate-%%'"

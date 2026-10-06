@@ -10,8 +10,7 @@
 -- ⛔ IT NEVER TRUNCATES, AND ON THIS PRODUCT THAT IS NOT A PRECAUTION, IT IS REQUIRED
 --    (rule 11a). Two of the four tables are shared on this stack:
 --
---      popwire_posts   wirecall-desk creates it and seeds six `wcdesk-%` rows in it,
---                      because WireCall settles a slate by re-reading the wires it covers.
+--      popwire_posts   another environment seeded six `wcdesk-%` rows in it.
 --                      Measured 2026-09-19 on the running stack: those six rows were
 --                      already there. This deletes `marrowgate-%` only.
 --      social_posts    the estate-wide posting ledger. This deletes `app = 'popwire'`

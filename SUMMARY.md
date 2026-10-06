@@ -58,7 +58,6 @@ to describe.
 | unemploy-desk | 4 | 16 | 25 | 1 | 20/20 | 4 | file a charge statement, start its audit, and record a determination against the right claimant |
 | usingitup-desk | 3 | 36 | 22 | 2 | 39/39 | 7 | put a reader on the letter and take one off, leaving the second publication alone |
 | whyyourbraindoesthat-desk | 2 | 22 | 15 | 2 | 25/25 | 7 | put a reader on the letter and finish an unsubscribe on its own token |
-| wirecall-desk | 4 | 35 | 26 | 1 | 39/39 | 6 | stake the caller's one call on today's slate, and run the tick that settles yesterday's |
 
 ## The rules these were built under
 

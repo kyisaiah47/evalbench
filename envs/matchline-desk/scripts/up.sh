@@ -19,7 +19,7 @@
 # key to the browser and this environment would quietly be driving the live project.
 #
 # ⛔ NO STRIPE KEY IS SET, AND THAT IS THE STRICTER READING OF "USE A PLACEHOLDER".
-# MatchLine bills on the SECOND live Stripe key on this machine, the one OutRip and WireCall use
+# MatchLine bills on the SECOND live Stripe key on this machine, the one OutRip uses
 # (the account id is measured and written into the product's own .env.example). A
 # placeholder key is not inert: constructing a Stripe client with one succeeds perfectly happily
 # and the first call goes out over the wire to api.stripe.com to be refused there. Leaving the

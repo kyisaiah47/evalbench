@@ -248,7 +248,7 @@
   "not_gradable": [
     {
       "what": "POST /api/checkout",
-      "why": "the second half of the handler is a live Stripe Checkout Session create. MatchLine bills on the second live key on this machine (acct_1U94AeHX6skw2rM7, the one OutRip and WireCall use), and no Stripe call may be made here. With the key absent, which is the product's own not-configured path, the route inserts the ml_orders row and then throws, so the only outcome to grade is a 500. Measured 2026-09-19."
+      "why": "the second half of the handler is a live Stripe Checkout Session create. MatchLine bills on the second live key on this machine (acct_1U94AeHX6skw2rM7, the one OutRip uses), and no Stripe call may be made here. With the key absent, which is the product's own not-configured path, the route inserts the ml_orders row and then throws, so the only outcome to grade is a 500. Measured 2026-09-19."
     },
     {
       "what": "GET /api/checkout/confirm",

@@ -294,8 +294,7 @@ class DeskTask(vf.Task[DeskData, vf.State, DeskTaskConfig]):
 
     def _index_slugs(self) -> list[str]:
         """⛔ `marrowgate-%` ONLY, AND ON THIS TABLE THAT IS LOAD BEARING (rule 11a).
-        `popwire_posts` is shared: wirecall-desk seeds six `wcdesk-%` rows in it because WireCall
-        settles a slate by re-reading the wires it covers. A guard that counted the table would
+        `popwire_posts` is shared: another environment seeded six `wcdesk-%` rows in it. A guard that counted the table would
         read 8 instead of 2 and would fail or pass on a neighbour's fixture."""
         return [
             str(r["slug"])
