@@ -5,3 +5,5 @@
 # Next.js rewrites this on every dev and build run, flipping between .next/dev/types and
 # .next/types depending on which ran last. The file itself says it should not be edited.
 ^next-env\.d\.ts$
+# scripts/build-data.mjs — declared by nightly-deploy 2026-10-06
+^src/data/environments\.json$
