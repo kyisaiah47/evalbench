@@ -11,7 +11,7 @@ export default function ViewControls() {
       <div role="group" aria-label="Page view">
         <span>Your view</span>
         <button type="button" onClick={() => mode.choose('console')} aria-pressed={mode.view === 'console'}>Console</button>
-        <button type="button" onClick={() => mode.choose('simple')} aria-pressed={mode.view === 'simple'}>Simple</button>
+        <button type="button" onClick={() => mode.choose('simple')} aria-pressed={mode.view === 'simple'} disabled={!mode.hasSimple} title={mode.hasSimple ? undefined : 'This page has no Simple view'}>Simple</button>
       </div>
       <button type="button" onClick={mode.welcome}>Start here <span aria-hidden="true">{'↗'}</span></button>
     </div>

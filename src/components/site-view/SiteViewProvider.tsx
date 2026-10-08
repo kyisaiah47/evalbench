@@ -11,11 +11,21 @@ import './simple.css';
  * saved choice, and a valid explicit choice is saved. Every storage access is wrapped, because a
  * private window can throw on read. */
 export type SiteView = 'console' | 'simple';
-type Mode = { view: SiteView; choose: (view: SiteView) => void; welcome: () => void };
+/* `view` is what the page shows: Simple only when the reader chose Simple AND this route has a
+ * Simple body. `chosen` is the saved choice, kept so the next route with a Simple body opens in it. */
+type Mode = { view: SiteView; chosen: SiteView; hasSimple: boolean; choose: (view: SiteView) => void; welcome: () => void; claimSimple: (path: string) => () => void };
 
 const Context = createContext<Mode | null>(null);
 export function useSiteView() {
   return useContext(Context);
+}
+
+/* A component that renders a Simple body for this route calls this. A route that never claims
+ * Simple stays in Console whatever was chosen, so the chrome always matches the body. */
+export function useClaimSimple(active = true) {
+  const claim = useContext(Context)?.claimSimple;
+  const path = usePathname();
+  useEffect(() => (active && claim ? claim(path) : undefined), [active, claim, path]);
 }
 
 const VIEW_KEY = `${SV_KEY}:view`;
@@ -36,8 +46,20 @@ export function useDraft<T>(key: string, initial: T): [T, (value: T) => void] {
 }
 
 export default function SiteViewProvider({ children, welcome: copy }: { children: ReactNode; welcome: WelcomeCopy }) {
-  const [view, setView] = useState<SiteView>('console');
+  const [chosen, setView] = useState<SiteView>('console');
+  const [claims, setClaims] = useState<Record<string, number>>({});
   const path = usePathname();
+
+  const claimSimple = useCallback((claimed: string) => {
+    setClaims((c) => ({ ...c, [claimed]: (c[claimed] || 0) + 1 }));
+    return () => setClaims((c) => {
+      const next = { ...c, [claimed]: (c[claimed] || 1) - 1 };
+      if (next[claimed] <= 0) delete next[claimed];
+      return next;
+    });
+  }, []);
+  const hasSimple = (claims[path] || 0) > 0;
+  const view: SiteView = chosen === 'simple' && hasSimple ? 'simple' : 'console';
 
   const choose = useCallback((next: SiteView) => {
     setView(next);
@@ -67,7 +89,7 @@ export default function SiteViewProvider({ children, welcome: copy }: { children
   const draftValue = useMemo(() => ({ drafts, set: setDraft }), [drafts, setDraft]);
 
   return (
-    <Context.Provider value={{ view, choose, welcome }}>
+    <Context.Provider value={{ view, chosen, hasSimple, choose, welcome, claimSimple }}>
       <DraftContext.Provider value={draftValue}>
         <div className="sv-surface" data-view={view}>{children}</div>
       </DraftContext.Provider>

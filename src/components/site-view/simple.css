@@ -158,6 +158,8 @@
 .sv-tools > div { display: flex; align-items: center; gap: 20px; }
 .sv-tools button { min-height: 44px; padding: 0; border: 0; background: none; color: var(--sv-ink-2); font: inherit; cursor: pointer; }
 .sv-tools button:hover { color: var(--sv-ink); }
+.sv-tools button:disabled { opacity: .45; cursor: not-allowed; }
+.sv-tools button:disabled:hover { color: var(--sv-ink-2); }
 .sv-tools button[aria-pressed='true'] { color: var(--sv-ink); text-decoration: underline; text-decoration-color: var(--sv-accent); text-underline-offset: 6px; }
 .sv-tools-strip { border-top: 1px solid var(--sv-line); background: var(--sv-panel); }
 .sv-tools-strip .in { padding-top: 4px; padding-bottom: 4px; }
